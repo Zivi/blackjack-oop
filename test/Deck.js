@@ -21,6 +21,13 @@ describe('Deck', function() {
       var cardsBefore = deck.cards;
       deck.shuffle();
       assert.notDeepEqual(cardsBefore, deck.cards);
-    })
-  })
+    });
+  });
+  describe('#draw', function() {
+    it('should remove the last card from deck', function() {
+      var deck = new Deck();
+      var drawnCard = deck.cards[deck.cards.length - 1];
+      assert.equal(drawnCard, deck.draw());
+    });
+  });
 });

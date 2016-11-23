@@ -9,8 +9,11 @@ function Deck() {
     this.cards.push(new Card(value, suits[j]));
   }
 }
-
 Deck.prototype.shuffle = function() {
   this.cards = _.shuffle(this.cards);
+}
+
+Deck.prototype.draw = function() {
+  return this.cards.pop();
 }
 module.exports = Deck;
