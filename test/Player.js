@@ -3,12 +3,19 @@ var Player = require('../Player');
 var Deck = require('../Deck');
 
 describe('Player', function() {
-  describe('#move', function() {
-    it('should have two cards after the first move', function() {
-      var player = new Player();
-      var deck = new Deck();
-      console.log('hand: ' + player.hand);
-      assert.equal(2, player.move(deck));
+  describe('#hit', function() {
+    beforeEach(function() {
+      this.player = new Player();
+      this.deck = new Deck();
+      this.deck.shuffle();
+    });
+    it('should decrease the size of the deck by 1', function() {
+      this.player.hit(this.deck);
+      assert.equal(51, this.deck.cards.length);
+    });
+    it('should increase the size of the hand by 1', function() {
+      this.player.hit(this.deck);
+      assert.equal(1, this.player.hand.length);
     });
   });
 });

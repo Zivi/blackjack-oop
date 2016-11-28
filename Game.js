@@ -1,10 +1,16 @@
 var Player = require('./Player');
+var Deck = require('./Deck');
 function Game() {
-  this.player1 = new Player();
-  this.dealer = new Player();
+  this.player = new Player();
   this.deck = new Deck();
 }
 
 Game.prototype.start = function() {
-  this.player1.move(this.deck);
+  this.deck.shuffle();
+  this.player.hit(this.deck);
+  this.player.hit(this.deck);
+  this.player.move(this.deck);
 }
+
+var game = new Game();
+game.start();
